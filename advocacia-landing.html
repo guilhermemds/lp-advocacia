@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessoria Jurídica Empresarial | Blindagem Jurídica Contínua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14191c;
+    --navy:#1c2b3a;
+    --paper:#f2eee3;
+    --paper-dim:#e7e2d3;
+    --brass:#b9955a;
+    --brass-light:#d3b787;
+    --burgundy:#7a2e2e;
+    --line: rgba(20,25,28,0.14);
+    --line-dark: rgba(242,238,227,0.14);
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{padding:110px 0;}
+  @media (max-width:768px){
+    section{padding:64px 0;}
+    .container{padding:0 20px;}
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--brass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background: var(--brass);
+    display:inline-block;
+  }
+  h1,h2,h3{
+    font-family: var(--serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color: var(--ink);
+  }
+  .lede{
+    font-size:19px;
+    line-height:1.6;
+    color: rgba(20,25,28,0.72);
+    max-width:52ch;
+  }
+
+  /* ===== TOP CASE-FILE BAR ===== */
+  .case-bar{
+    background: var(--ink);
+    color: rgba(242,238,227,0.55);
+    font-family: var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    padding:9px 0;
+  }
+  .case-bar .container{
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .case-bar span:last-child{ color: rgba(242,238,227,0.35); }
+  @media (max-width:600px){ .case-bar span:last-child{display:none;} }
+
+  /* ===== NAV ===== */
+  header.site{
+    background: var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:50;
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .wordmark{
+    font-family: var(--serif);
+    font-size:21px;
+    letter-spacing:0.01em;
+  }
+  .wordmark em{ font-style:italic; color:var(--brass); }
+  .nav-links{
+    display:flex; gap:36px;
+    font-size:14px;
+    font-weight:500;
+  }
+  .nav-links a{ opacity:.75; transition:opacity .2s; }
+  .nav-links a:hover{ opacity:1; }
+  .nav-cta{
+    display:flex; align-items:center; gap:22px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:8px;
+    padding:13px 26px;
+    font-size:14px; font-weight:600;
+    border-radius:2px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition: all .2s ease;
+    font-family: var(--sans);
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover{ background: var(--navy); }
+  .btn-outline{
+    background:transparent;
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .btn-outline:hover{ background: var(--ink); color:var(--paper); }
+  .btn-gold{
+    background: var(--brass);
+    color: var(--ink);
+  }
+  .btn-gold:hover{ background: var(--brass-light); }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:96px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:70px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 4.6vw, 60px);
+    line-height:1.08;
+    margin-bottom:26px;
+  }
+  .hero h1 .accent{ font-style:italic; color: var(--brass); }
+  .hero-actions{
+    display:flex; align-items:center; gap:20px;
+    margin-top:38px; flex-wrap:wrap;
+  }
+  .hero-note{
+    font-size:13px; color:rgba(20,25,28,.6);
+  }
+  .hero-visual{
+    position:relative;
+    aspect-ratio: 1/1;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .seal{
+    width:100%; max-width:380px;
+  }
+  .hero-caption{
+    position:absolute;
+    bottom:-6px; left:50%; transform:translateX(-50%);
+    font-family: var(--mono);
+    font-size:11px; letter-spacing:.1em;
+    color: rgba(20,25,28,.5);
+    text-align:center;
+    white-space:nowrap;
+  }
+  @media (max-width:900px){
+    .hero .container{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:220px; margin:0 auto 20px; }
+  }
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip{
+    padding:36px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .trust-strip .container{
+    display:flex; align-items:center; justify-content:space-between; gap:40px;
+    flex-wrap:wrap;
+  }
+  .trust-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:rgba(20,25,28,.45);
+    white-space:nowrap;
+  }
+  .trust-logos{
+    display:flex; gap:44px; flex-wrap:wrap;
+    font-family:var(--serif); font-size:18px; color:rgba(20,25,28,.35);
+  }
+
+  /* ===== DOR / EDITORIAL ===== */
+  .editorial{
+    background: var(--navy);
+    color: var(--paper);
+  }
+  .editorial .eyebrow{ color: var(--brass-light); }
+  .editorial .container{
+    display:grid; grid-template-columns: 0.9fr 1.1fr; gap:64px;
+  }
+  .editorial h2{
+    color: var(--paper);
+    font-size:clamp(30px,3.4vw,42px);
+    line-height:1.18;
+  }
+  .editorial .pull{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:24px;
+    line-height:1.45;
+    color: var(--brass-light);
+    border-left:2px solid var(--brass);
+    padding-left:26px;
+    margin-top:10px;
+  }
+  .editorial p.body{
+    color: rgba(242,238,227,.72);
+    font-size:16px;
+    margin-top:22px;
+    max-width:48ch;
+  }
+  @media (max-width:860px){
+    .editorial .container{ grid-template-columns:1fr; gap:30px; }
+  }
+
+  /* ===== CLÁUSULAS (mecanismo) — signature element ===== */
+  .clauses{
+    background: var(--paper);
+  }
+  .clauses-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .clause-list{
+    display:flex; flex-direction:column;
+  }
+  .clause{
+    display:grid;
+    grid-template-columns: 130px 1fr;
+    gap:36px;
+    padding:38px 0;
+    border-top:1px solid var(--line);
+  }
+  .clause:last-child{ border-bottom:1px solid var(--line); }
+  .clause-num{
+    font-family: var(--mono);
+    font-size:13px;
+    color: var(--brass);
+    letter-spacing:.04em;
+    padding-top:4px;
+  }
+  .clause-num span{
+    display:block;
+    font-family:var(--serif);
+    font-size:34px;
+    color: var(--ink);
+    font-style:italic;
+    margin-top:6px;
+  }
+  .clause h3{
+    font-size:22px;
+    margin-bottom:10px;
+  }
+  .clause p{
+    color:rgba(20,25,28,.68);
+    max-width:60ch;
+    font-size:15.5px;
+  }
+  @media (max-width:700px){
+    .clause{ grid-template-columns:1fr; gap:10px; }
+  }
+
+  /* ===== BENEFÍCIOS ===== */
+  .benefits .container{
+    display:grid; grid-template-columns: 0.8fr 1.2fr; gap:60px;
+  }
+  .benefit-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background: var(--line);
+    border:1px solid var(--line);
+  }
+  .benefit-item{
+    background: var(--paper);
+    padding:32px 30px;
+  }
+  .benefit-item .mark{
+    color: var(--brass);
+    font-family:var(--mono);
+    font-size:13px;
+    margin-bottom:14px;
+    display:block;
+  }
+  .benefit-item h4{
+    font-family:var(--serif);
+    font-size:18px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .benefit-item p{
+    font-size:14.5px;
+    color:rgba(20,25,28,.65);
+  }
+  @media (max-width:860px){
+    .benefits .container{ grid-template-columns:1fr; gap:32px; }
+    .benefit-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ===== COMO FUNCIONA ===== */
+  .process{
+    background: var(--paper-dim);
+  }
+  .process-track{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin-top:60px;
+    position:relative;
+  }
+  .process-track::before{
+    content:"";
+    position:absolute;
+    top:15px; left:0; right:0;
+    height:1px;
+    background: var(--line);
+  }
+  .step{
+    padding-right:24px;
+    position:relative;
+  }
+  .step-dot{
+    width:30px; height:30px;
+    border-radius:50%;
+    background: var(--paper-dim);
+    border:1px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:12px;
+    margin-bottom:22px;
+    position:relative; z-index:1;
+  }
+  .step h4{
+    font-family:var(--serif); font-size:18px; font-weight:500; margin-bottom:8px;
+  }
+  .step p{ font-size:14px; color:rgba(20,25,28,.65); }
+  @media (max-width:760px){
+    .process-track{ grid-template-columns:1fr; gap:34px; }
+    .process-track::before{ display:none; }
+  }
+
+  /* ===== COMPARATIVO ===== */
+  .compare .container{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border:1px solid var(--line);
+  }
+  .compare-col{ padding:44px 40px; }
+  .compare-col.without{ background: var(--paper); border-right:1px solid var(--line); }
+  .compare-col.with{ background: var(--ink); color: var(--paper); }
+  .compare-col h3{ font-size:20px; margin-bottom:22px; }
+  .compare-col.with h3{ color: var(--brass-light); }
+  .compare-col li{
+    display:flex; gap:12px;
+    padding:11px 0;
+    border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .compare-col.with li{ border-top:1px solid var(--line-dark); color:rgba(242,238,227,.82); }
+  .compare-col li:first-child{ border-top:none; }
+  @media (max-width:760px){
+    .compare .container{ grid-template-columns:1fr; }
+    .compare-col.without{ border-right:none; border-bottom:1px solid var(--line); }
+  }
+
+  /* ===== AUTORIDADE ===== */
+  .authority .container{
+    display:grid; grid-template-columns: 0.85fr 1.15fr; gap:64px; align-items:center;
+  }
+  .authority-photo{
+    aspect-ratio:4/5;
+    background: var(--paper-dim);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:12px; color:rgba(20,25,28,.4);
+    text-align:center;
+  }
+  .authority-details p.body{
+    color:rgba(20,25,28,.7); font-size:15.5px; margin:18px 0 24px; max-width:56ch;
+  }
+  .cred-list{ display:flex; flex-direction:column; gap:10px; }
+  .cred-list li{
+    font-size:13.5px; font-family:var(--mono);
+    color:rgba(20,25,28,.6);
+    display:flex; gap:10px;
+  }
+  .cred-list li::before{ content:"—"; color:var(--brass); }
+  @media (max-width:860px){
+    .authority .container{ grid-template-columns:1fr; gap:32px; }
+    .authority-photo{ max-width:260px; }
+  }
+
+  /* ===== OBJEÇÕES / FAQ ===== */
+  .faq-head{ max-width:600px; margin-bottom:50px; }
+  .faq-item{
+    border-top:1px solid var(--line);
+  }
+  .faq-item:last-child{ border-bottom:1px solid var(--line); }
+  .faq-q{
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 4px;
+    background:none; border:none;
+    font-family:var(--serif); font-size:18px; text-align:left;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .faq-q .plus{
+    font-family:var(--mono); font-size:18px; color:var(--brass);
+    transition: transform .25s ease;
+  }
+  .faq-item.open .faq-q .plus{ transform: rotate(45deg); }
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition: max-height .3s ease;
+  }
+  .faq-a p{
+    padding:0 4px 26px;
+    font-size:15px; color:rgba(20,25,28,.68);
+    max-width:64ch;
+  }
+
+  /* ===== OFERTA / CTA FINAL ===== */
+  .offer{
+    background: var(--ink);
+    color: var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .offer .container{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+  }
+  .offer .eyebrow{ color:var(--brass-light); }
+  .offer h2{
+    color:var(--paper);
+    font-size:clamp(30px,3.6vw,44px);
+    line-height:1.14;
+    margin-bottom:20px;
+  }
+  .offer p.body{ color:rgba(242,238,227,.72); font-size:16px; max-width:50ch; margin-bottom:30px; }
+  .offer-card{
+    background: rgba(242,238,227,0.04);
+    border:1px solid var(--line-dark);
+    padding:40px;
+  }
+  .offer-card .label{
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+    color: var(--brass-light); text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .offer-card h3{
+    color: var(--paper); font-size:24px; margin-bottom:14px;
+  }
+  .offer-card ul{ margin:20px 0 28px; display:flex; flex-direction:column; gap:10px; }
+  .offer-card li{
+    font-size:14px; color:rgba(242,238,227,.75);
+    display:flex; gap:10px;
+  }
+  .offer-card li::before{ content:"✓"; color:var(--brass-light); }
+  .offer-card .btn{ width:100%; }
+  @media (max-width:860px){
+    .offer .container{ grid-template-columns:1fr; gap:36px; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background: var(--paper-dim);
+    padding:60px 0 30px;
+    font-size:13px;
+  }
+  .footer-top{
+    display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:44px;
+    border-bottom:1px solid var(--line);
+  }
+  .footer-top h5{
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:rgba(20,25,28,.45); margin-bottom:16px;
+  }
+  .footer-top li{ padding:5px 0; color:rgba(20,25,28,.65); }
+  .footer-top .wordmark{ margin-bottom:14px; }
+  .footer-top p.desc{ color:rgba(20,25,28,.55); max-width:32ch; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:26px; flex-wrap:wrap; gap:12px;
+    color:rgba(20,25,28,.45);
+  }
+  @media (max-width:760px){
+    .footer-top{ grid-template-columns:1fr 1fr; }
+  }
+
+  .reveal{
+    opacity:0; transform:translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="case-bar">
+  <div class="container">
+    <span>Processo Nº [preencher] · Autos de Assessoria Empresarial</span>
+    <span>Atendimento consultivo para pessoas jurídicas · [preencher — cidade/UF]</span>
+  </div>
+</div>
+
+<header class="site">
+  <nav class="container">
+    <div class="wordmark">[Nome do Escritório] <em>Advogados</em></div>
+    <div class="nav-links">
+      <a href="#metodo">O Método</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#processo">Como Funciona</a>
+      <a href="#faq">Perguntas</a>
+    </div>
+    <div class="nav-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('oferta').scrollIntoView({behavior:'smooth'})">Agendar diagnóstico</button>
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="eyebrow">Assessoria Jurídica Empresarial</div>
+      <h1>Sua empresa não precisa de <span class="accent">mais um advogado</span>. Precisa de blindagem jurídica contínua.</h1>
+      <p class="lede">Contratos revisados antes de virarem passivo. Riscos identificados antes de virarem processo. Uma assessoria pensada para acompanhar o ritmo do seu negócio — não o ritmo do fórum.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('oferta').scrollIntoView({behavior:'smooth'})">Solicitar diagnóstico jurídico</button>
+        <a href="#metodo" class="btn btn-outline">Conhecer o método →</a>
+      </div>
+      <p class="hero-note">Sem burocracia para começar. Resposta em até [preencher] dia(s) útil.</p>
+    </div>
+    <div class="hero-visual">
+      <svg class="seal" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="148" stroke="#14191c" stroke-width="1" opacity="0.15"/>
+        <circle cx="150" cy="150" r="122" stroke="#b9955a" stroke-width="1"/>
+        <circle cx="150" cy="150" r="118" stroke="#14191c" stroke-width="1" opacity="0.25"/>
+        <g opacity="0.9">
+          <path d="M150 40 L150 60" stroke="#14191c" stroke-width="1"/>
+          <path d="M150 260 L150 240" stroke="#14191c" stroke-width="1"/>
+          <path d="M40 150 L60 150" stroke="#14191c" stroke-width="1"/>
+          <path d="M260 150 L240 150" stroke="#14191c" stroke-width="1"/>
+        </g>
+        <text x="150" y="140" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="26" fill="#14191c">Blindagem</text>
+        <text x="150" y="168" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#b9955a">JURÍDICA CONTÍNUA</text>
+        <path id="circlePath" d="M150,150 m-98,0 a98,98 0 1,1 196,0 a98,98 0 1,1 -196,0" fill="none"/>
+        <text font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="3" fill="#14191c" opacity="0.55">
+          <textPath href="#circlePath" startOffset="2%">FIDE ET DILIGENTIA · SEGURANÇA JURÍDICA PARA EMPRESAS ·</textPath>
+        </text>
+      </svg>
+      <div class="hero-caption">registrado sob OAB/[UF] [preencher]</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container">
+    <span class="trust-label">Empresas que já contaram com assessoria do escritório</span>
+    <div class="trust-logos">
+      <span>[Logo Cliente]</span>
+      <span>[Logo Cliente]</span>
+      <span>[Logo Cliente]</span>
+      <span>[Logo Cliente]</span>
+    </div>
+  </div>
+</section>
+
+<section class="editorial reveal">
+  <div class="container">
+    <div>
+      <div class="eyebrow">O risco que você não vê</div>
+      <h2>A maioria dos processos que uma empresa enfrenta começou seis meses antes, num contrato assinado sem revisão.</h2>
+    </div>
+    <div>
+      <p class="pull">"Advogado bom não é o que resolve o processo. É o que evita que ele exista."</p>
+      <p class="body">Cláusula genérica, fornecedor sem garantia contratual, funcionário desligado sem o cuidado devido, sócio sem acordo formal: são decisões pequenas, tomadas na correria, que se acumulam em exposição real. Sem alguém olhando para o negócio de forma contínua, o risco só aparece quando já virou notificação.</p>
+    </div>
+  </div>
+</section>
+
+<section class="clauses" id="metodo">
+  <div class="container">
+    <div class="clauses-head reveal">
+      <div class="eyebrow">O Método</div>
+      <h2>Blindagem Jurídica Contínua — quatro cláusulas, um só compromisso.</h2>
+    </div>
+    <div class="clause-list">
+      <div class="clause reveal">
+        <div class="clause-num">ART.<span>1º</span></div>
+        <div><h3>Diagnóstico</h3><p>Levantamento completo dos contratos, processos internos e pontos de exposição atuais da empresa — o retrato real do risco, sem jargão.</p></div>
+      </div>
+      <div class="clause reveal">
+        <div class="clause-num">ART.<span>2º</span></div>
+        <div><h3>Blindagem contratual</h3><p>Revisão e padronização dos contratos com clientes, fornecedores e sócios, fechando as brechas que hoje ficam abertas por padrão.</p></div>
+      </div>
+      <div class="clause reveal">
+        <div class="clause-num">ART.<span>3º</span></div>
+        <div><h3>Monitoramento contínuo</h3><p>Acompanhamento mensal das obrigações, prazos e movimentações relevantes — o problema é resolvido antes de virar notificação.</p></div>
+      </div>
+      <div class="clause reveal">
+        <div class="clause-num">ART.<span>4º</span></div>
+        <div><h3>Atuação preventiva e contenciosa</h3><p>Quando o litígio é inevitável, o escritório já conhece o histórico da empresa e atua com contexto, não do zero.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Benefícios</div>
+      <h2 style="font-size:clamp(28px,3.2vw,38px); line-height:1.2;">O que muda na prática quando o jurídico deixa de ser reativo.</h2>
+      <p class="lede" style="margin-top:18px;">Não é sobre ter "mais um advogado". É sobre operar com previsibilidade.</p>
+    </div>
+    <div class="benefit-grid reveal">
+      <div class="benefit-item">
+        <span class="mark">01</span>
+        <h4>Redução real de exposição</h4>
+        <p>Contratos e processos revisados antes de gerarem passivo, não depois.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="mark">02</span>
+        <h4>Custo previsível</h4>
+        <p>Assessoria contínua com valor fixo, sem surpresa de honorários por demanda pontual.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="mark">03</span>
+        <h4>Resposta rápida</h4>
+        <p>Um interlocutor que já conhece a empresa quando uma decisão precisa ser tomada rápido.</p>
+      </div>
+      <div class="benefit-item">
+        <span class="mark">04</span>
+        <h4>Visão estratégica</h4>
+        <p>Jurídico como parte da decisão de negócio, não como carimbo no fim do processo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="processo">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Como funciona</div>
+      <h2 style="font-size:clamp(28px,3.2vw,38px);">Do primeiro contato à rotina de blindagem.</h2>
+    </div>
+    <div class="process-track">
+      <div class="step reveal">
+        <div class="step-dot">01</div>
+        <h4>Diagnóstico gratuito</h4>
+        <p>Conversa de [preencher] min para entender o momento da empresa e os principais riscos visíveis.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-dot">02</div>
+        <h4>Plano de blindagem</h4>
+        <p>Proposta objetiva com prioridades, prazos e escopo — sem letras miúdas.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-dot">03</div>
+        <h4>Execução</h4>
+        <p>Revisão contratual e ajustes internos conduzidos junto com sua equipe.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-dot">04</div>
+        <h4>Acompanhamento</h4>
+        <p>Rotina mensal de monitoramento e suporte para novas decisões.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="container reveal">
+    <div class="compare-col without">
+      <h3>Sem assessoria contínua</h3>
+      <ul>
+        <li>Contratos assinados sem revisão prévia</li>
+        <li>Advogado acionado só quando o problema já existe</li>
+        <li>Custos jurídicos imprevisíveis</li>
+        <li>Risco descoberto tarde demais</li>
+      </ul>
+    </div>
+    <div class="compare-col with">
+      <h3>Com Blindagem Jurídica Contínua</h3>
+      <ul>
+        <li>Contratos revisados antes da assinatura</li>
+        <li>Acompanhamento mensal e proativo</li>
+        <li>Valor fixo e previsível</li>
+        <li>Risco identificado e tratado com antecedência</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="authority">
+  <div class="container">
+    <div class="authority-photo reveal">[Foto do(a) advogado(a) responsável]</div>
+    <div class="authority-details reveal">
+      <div class="eyebrow">Responsável técnico</div>
+      <h2 style="font-size:clamp(26px,3vw,34px);">[Nome do(a) advogado(a) responsável]</h2>
+      <p class="body">[Breve trajetória profissional, áreas de atuação e abordagem — preencher com histórico real, sem inventar números ou casos específicos.]</p>
+      <ul class="cred-list">
+        <li>OAB/[UF] [preencher]</li>
+        <li>[Especialização / pós-graduação, se houver]</li>
+        <li>[Área de atuação principal]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="faq-head reveal">
+      <div class="eyebrow">Perguntas frequentes</div>
+      <h2 style="font-size:clamp(28px,3.2vw,38px);">Antes de agendar, as dúvidas mais comuns.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Já tenho um advogado. Por que trocar?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Não é sobre trocar — muitas empresas mantêm o advogado atual para questões pontuais e contratam a assessoria contínua especificamente para a rotina de prevenção contratual e monitoramento, que costuma ficar de fora do atendimento tradicional.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">É caro para o porte da minha empresa?<span class="plus">+</span></button>
+        <div class="faq-a"><p>O valor é definido conforme o porte e a complexidade da operação, com opções de escopo. No diagnóstico gratuito, você recebe uma proposta objetiva antes de decidir qualquer coisa.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Não tenho tempo para acompanhar isso de perto.<span class="plus">+</span></button>
+        <div class="faq-a"><p>Esse é exatamente o ponto do modelo contínuo: a rotina de revisão e monitoramento fica com o escritório, e você é acionado apenas quando uma decisão sua é realmente necessária.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Atendem empresas fora de [preencher — cidade/UF]?<span class="plus">+</span></button>
+        <div class="faq-a"><p>[preencher — informar abrangência geográfica e modelo de atendimento remoto/presencial]</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="oferta">
+  <div class="container">
+    <div>
+      <div class="eyebrow">Oferta</div>
+      <h2>Comece pelo diagnóstico. Sem compromisso, sem letras miúdas.</h2>
+      <p class="body">Em uma conversa objetiva, você sai sabendo exatamente onde estão os pontos de risco da sua empresa hoje — e se faz sentido seguir com a assessoria contínua.</p>
+    </div>
+    <div class="offer-card">
+      <span class="label">Diagnóstico Jurídico Estratégico</span>
+      <h3>[preencher — valor ou "gratuito"]</h3>
+      <ul>
+        <li>Conversa de [preencher] minutos com um advogado responsável</li>
+        <li>Mapeamento inicial de riscos contratuais</li>
+        <li>Recomendações objetivas, sem obrigação de contratar</li>
+      </ul>
+      <button class="btn btn-gold">Agendar meu diagnóstico</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="wordmark">[Nome do Escritório] <em>Advogados</em></div>
+        <p class="desc">Assessoria jurídica empresarial contínua, focada em prevenção contratual e segurança de negócio.</p>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#metodo">O Método</a></li>
+          <li><a href="#beneficios">Benefícios</a></li>
+          <li><a href="#faq">Perguntas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul>
+          <li>[e-mail@preencher.com]</li>
+          <li>[telefone/whatsapp]</li>
+          <li>[endereço do escritório]</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Institucional</h5>
+        <ul>
+          <li>OAB/[UF] [preencher]</li>
+          <li>CNPJ [preencher]</li>
+          <li>Política de Privacidade (LGPD)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 [Nome do Escritório] Advogados. Todos os direitos reservados.</span>
+      <span>Este site não constitui aconselhamento jurídico individual.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
